@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des Stocks</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<h1 style="text-align: center;">Liste des articles en stock</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Nom de l'article</th>
+        <th>Quantité en stock</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="article : ${stocks}">
+        <td th:text="${article.nomArticle}"></td>
+        <td th:text="${article.quantite}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<h3 style="text-align: center;">Réapprovisionner le stock</h3>
+<form action="/stocks/home/reapprovisionner" method="post" style="text-align: center;">
+    <button type="submit">Réapprovisionner</button>
+</form>
+
+</body>
+</html>
